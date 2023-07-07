@@ -1,0 +1,53 @@
+@use "../../variables" as var;
+
+.form {
+  display: flex;
+  padding: 16px;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  border-radius: 16px;
+  background: var.$color_white;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);
+  
+  @media (min-width: 376px) {
+    & {
+      max-width: 500px;
+    }
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+  border: none;
+}
+
+.legend {
+  font-size: 20px;
+  line-height: normal;
+}
+
+.button {
+  display: flex;
+  height: 48px;
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border: none;
+  border-radius: 8px;
+  background: var.$color_violet;
+  color: var.$color_white;
+  font-size: 16px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
