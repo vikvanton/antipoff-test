@@ -13,12 +13,13 @@
     cursor: pointer;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1124px) {
     height: 40px;
     width: 40px;
     border: none;
     background: url($img_url) no-repeat;
     color: transparent;
+    overflow: hidden;
   }
 }
 

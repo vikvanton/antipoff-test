@@ -1,0 +1,19 @@
+.main {
+  display: flex;
+  align-items: flex-start;
+  gap: 130px;
+  padding: 50px 188px;
+  font-size: 16px;
+  line-height: 136.187%;
+
+  @media (max-width: 1124px) {
+    padding: 32px 64px;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 32px;
+  }
+  
+  @media (max-width: 568px) {
+    padding: 32px 16px;
+  }
+}

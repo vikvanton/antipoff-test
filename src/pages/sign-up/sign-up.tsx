@@ -1,4 +1,4 @@
-import SignUpForm from "../../components/sign-up-form/sign-up-form";
+import SignUpForm from "./sign-up-form/sign-up-form";
 import styles from "./sign-up.module.scss";
 
 function SignUp(): JSX.Element {

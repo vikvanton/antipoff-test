@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./sign-up-input.module.scss";
+import styles from "./input.module.scss";
 
 interface ISignUpInput {
   type: "text" | "password";

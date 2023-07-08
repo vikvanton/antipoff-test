@@ -1,0 +1,10 @@
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 630px;
+
+  @media (max-width: 1124px) {
+    width: 100%;
+  }
+}
