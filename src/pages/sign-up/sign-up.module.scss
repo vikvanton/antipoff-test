@@ -8,11 +8,9 @@
   background-color: var.$color_white;
 
   @media (min-width: 376px) {
-    & {
-      justify-content: center;
-      width: 100vw;
-      height: 100vh;
-      padding-top: 0;
-    }
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 0;
   }
 }

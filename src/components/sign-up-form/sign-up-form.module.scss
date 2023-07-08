@@ -13,9 +13,7 @@
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);
   
   @media (min-width: 376px) {
-    & {
-      max-width: 500px;
-    }
+    max-width: 500px;
   }
 }
 
@@ -46,8 +44,8 @@
   background: var.$color_violet;
   color: var.$color_white;
   font-size: 16px;
-}
 
-.button:hover {
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
 }

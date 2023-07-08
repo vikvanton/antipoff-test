@@ -1,0 +1,33 @@
+@use "../../variables" as var;
+
+@mixin btn($img_url) {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var.$color_gray_light;
+  color: var.$color_gray_light;
+  background: transparent;
+  font-size: 16px;
+  line-height: 136.187%;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 1024px) {
+    height: 40px;
+    width: 40px;
+    border: none;
+    background: url($img_url) no-repeat;
+    color: transparent;
+  }
+}
+
+.btnExit {
+  @include btn("../../../public/icons/exit.svg");
+}
+
+.btnBack {
+  @include btn("../../../public/icons/back.svg");
+}
+
+
