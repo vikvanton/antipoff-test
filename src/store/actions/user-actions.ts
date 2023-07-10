@@ -1,5 +1,5 @@
 import { getUserRequest } from "../../api/api";
-import { IError, TAppThunk, TUser } from "../../types/types";
+import { TError, TAppThunk, TUser } from "../../types/types";
 
 export const USER_SUCCESS = "USER_SUCCESS";
 export const USER_ERROR = "USER_ERROR";
@@ -25,7 +25,7 @@ export const getUser = (id: number): TAppThunk => {
         .then((result) => {
           dispatch({ type: USER_SUCCESS, data: result.data });
         })
-        .catch((error: IError) =>
+        .catch((error: TError) =>
           dispatch({
             type: USER_ERROR,
             data: error.message,

@@ -36,7 +36,7 @@ function Users(): JSX.Element {
       <UsersHeader />
       <main className={styles.main}>
         {usersError ? (
-          <h2 className={styles.error}>{usersError}</h2>
+          <p className={styles.error}>{usersError}</p>
         ) : (
           <>
             <UsersList users={users} />

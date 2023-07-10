@@ -1,13 +1,16 @@
 import { useState } from "react";
 import styles from "./input.module.scss";
 
-interface ISignUpInput {
-  type: "text" | "password";
+interface IInput {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  name: string;
+  type: "text" | "password" | "email";
   header: string;
-  error: string | null;
+  error: string;
 }
 
-function SignUpInput({ type, header, error }: ISignUpInput): JSX.Element {
+function Input({ value, onChange, name, type, header, error }: IInput): JSX.Element {
   const [show, setShow] = useState(false);
 
   return (
@@ -16,6 +19,9 @@ function SignUpInput({ type, header, error }: ISignUpInput): JSX.Element {
       <span className={styles.inputGroup}>
         <span className={`${styles.inputBlock}${error ? ` ${styles.inputBlockError}` : ""}`}>
           <input
+            value={value}
+            onChange={onChange}
+            name={name}
             className={styles.input}
             type={type === "password" ? (show ? "text" : "password") : type}
             autoComplete="on"
@@ -34,4 +40,4 @@ function SignUpInput({ type, header, error }: ISignUpInput): JSX.Element {
   );
 }
 
-export default SignUpInput;
+export default Input;

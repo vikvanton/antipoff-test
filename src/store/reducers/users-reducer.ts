@@ -1,9 +1,8 @@
-import { TUser, TUsers } from "../../types/types";
+import { TUsers } from "../../types/types";
 import { TUsersActions, USERS_ERROR, USERS_REQUEST, USERS_SUCCESS } from "../actions/users-actions";
 
 type TUsersState = {
   users: TUsers;
-  user: TUser | null;
   usersRequest: boolean;
   usersError: string;
 };
@@ -16,7 +15,6 @@ const initialState: TUsersState = {
     total_pages: 0,
     data: [],
   },
-  user: null,
   usersRequest: false,
   usersError: "",
 };
@@ -30,7 +28,10 @@ export const usersReducer = (state = initialState, action: TUsersActions) => {
       return {
         ...state,
         users: {
-          ...action.data,
+          page: action.data.page,
+          per_page: action.data.per_page,
+          total: action.data.total,
+          total_pages: action.data.total_pages,
           data:
             action.data.page === 1 ? action.data.data : [...state.users.data, ...action.data.data],
         },

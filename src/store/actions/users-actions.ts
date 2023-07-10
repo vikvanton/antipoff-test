@@ -1,4 +1,4 @@
-import { IError, TAppThunk, TUsers } from "../../types/types";
+import { TError, TAppThunk, TUsers } from "../../types/types";
 import { getUsersRequest } from "../../api/api";
 
 export const USERS_REQUEST = "USERS_REQUEST";
@@ -28,7 +28,7 @@ export const getUsers = (page = 1, perPages = 8): TAppThunk => {
       .then((result) => {
         dispatch({ type: USERS_SUCCESS, data: result });
       })
-      .catch((error: IError) =>
+      .catch((error: TError) =>
         dispatch({
           type: USERS_ERROR,
           data: error.message,
