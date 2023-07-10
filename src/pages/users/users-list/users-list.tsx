@@ -12,7 +12,7 @@ function UsersList({ users }: IUsersList): JSX.Element {
     <ul className={styles.usersList}>
       {users.map((user) => (
         <li key={user.id}>
-          <Link to={`/${user.id}`}>
+          <Link to={`/${user.id}`} state={true}>
             <UserCard
               avatar={user.avatar}
               firstName={user.first_name}
