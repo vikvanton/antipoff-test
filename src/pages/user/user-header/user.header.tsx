@@ -3,6 +3,7 @@ import ButtonNavigation from "../../../components/button-navigation/button-navig
 import styles from "./user.header.module.scss";
 import { useAppDispatch } from "../../../hooks/use-app-dispatch";
 import { CLEAR_AUTH } from "../../../store/actions/auth-actions";
+import { ChangeEvent, useState, useRef } from "react";
 
 interface IUserHeader {
   avatar: string;
@@ -14,10 +15,39 @@ interface IUserHeader {
 function UserHeader({ avatar, firstName, lastName, fromMain }: IUserHeader): JSX.Element {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const inputRef = useRef<HTMLInputElement>(null);
+  // Стейт хранения url выбираемой фотографии
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   const onBackClick = () => {
     if (fromMain) navigate(-1);
     else navigate("/");
+  };
+
+  /**
+   * Ф-ция-обработчик инпута загрузки фото.
+   * Читает файл, получает его url, сохраняет его в стейт.
+   *  */
+  const onImgInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files ? e.target.files[0] : null;
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageUrl(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+      e.target.value = "";
+    }
+  };
+
+  /**
+   * Ф-ция-обработчик кнопки загрузки фото.
+   * Вызывает click для инпута файла, если url фото в стейте нет.
+   * Иначе очищает стейт с url
+   *  */
+  const onBtnImgSelectClick = () => {
+    if (imageUrl) setImageUrl(null);
+    else inputRef.current?.click();
   };
 
   return (
@@ -27,7 +57,21 @@ function UserHeader({ avatar, firstName, lastName, fromMain }: IUserHeader): JSX
         <ButtonNavigation type="exit" text="Выход" onClick={() => dispatch({ type: CLEAR_AUTH })} />
       </nav>
       <section className={styles.info}>
-        <img className={styles.avatar} src={avatar} />
+        <div className={styles.avatarBlock}>
+          <img className={styles.avatar} src={imageUrl ? imageUrl : avatar} />
+          {/** Кнопка выбора/отмены выбора фото */}
+          <button className={styles.btnImgSelect} onClick={onBtnImgSelectClick}>
+            {imageUrl ? "Отменить" : "Выбрать фото"}
+          </button>
+          {/** Скрытый инпут для загрузки фото */}
+          <input
+            ref={inputRef}
+            className={styles.imgInput}
+            onChange={onImgInputChange}
+            type="file"
+            accept=".jpeg, .jpg"
+          />
+        </div>
         <div className={styles.data}>
           <h1 className={styles.name}>
             {firstName} {lastName}

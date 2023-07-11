@@ -1,8 +1,8 @@
-import { TUser } from "../../types/types";
+import { IUser } from "../../types/types";
 import { TUserActions, USER_ERROR, USER_SUCCESS } from "../actions/user-actions";
 
 type TUserState = {
-  user: TUser | null;
+  user: IUser | null;
   userError: string;
 };
 

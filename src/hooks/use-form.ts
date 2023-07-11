@@ -56,8 +56,9 @@ export const useForm = <T>(
           pass = formValues[key] as string;
           break;
         case "repeatPassword":
-          // Для поля "Повторите пароль" провераем равенство паролей
-          if (formValues[key] !== pass) setFieldError(key, "Пароли не совпадают");
+          // Для поля "Повторите пароль" проверяем на пустое значение и равенство паролей
+          if (!formValues[key]) setFieldError(key, "Поле не должно быть пустым");
+          else if (formValues[key] !== pass) setFieldError(key, "Пароли не совпадают");
           else setFieldError(key, "");
           break;
         // Для остальных полей проверяем на пустое значение
@@ -67,8 +68,7 @@ export const useForm = <T>(
       }
     }
     // Если форма невалидна, устанавливаем ошибки соответсвующих полей
-    if (!isValid)
-      setFormErrors({ ...formErrors, ...(hasFormErrors as { [key in keyof T]: string }) });
+    if (!isValid) setFormErrors({ ...(hasFormErrors as { [key in keyof T]: string }) });
     return isValid;
   };
 

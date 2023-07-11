@@ -4,21 +4,32 @@ import { store } from "../store/store";
 import { TUserActions } from "../store/actions/user-actions";
 import { TAuthActions } from "../store/actions/auth-actions";
 
-export type TUser = {
+export interface IUser {
   id: number;
   email: string;
   first_name: string;
   last_name: string;
   avatar: string;
-};
+}
 
-export type TUsers = {
+export interface ILikedUser extends IUser {
+  liked: boolean;
+}
+
+export interface IPages {
   per_page: number;
   total: number;
   page: number;
   total_pages: number;
-  data: Array<TUser>;
-};
+}
+
+export interface IUsers extends IPages {
+  data: Array<IUser>;
+}
+
+export interface ILikedUsers extends IPages {
+  data: Array<ILikedUser>;
+}
 
 export interface ICustomResponse<T> extends Response {
   json(): Promise<T>;

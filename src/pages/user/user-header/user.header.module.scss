@@ -51,11 +51,32 @@
   }
 }
 
+.avatarBlock {
+  width: 187px;
+  height: 187px;
+  border-radius: 100px;
+}
+
 .avatar {
   width: 187px;
   height: 187px;
   border-radius: 100px;
   object-fit: cover;
+}
+
+.btnImgSelect {
+  display: block;
+  margin: auto;
+  padding: 8px;
+  border: none;
+  color: var.$color_gray_light;
+  background: transparent;
+  font-size: 10px;
+  line-height: normal;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .data {
@@ -95,4 +116,8 @@
 
 .name, .position {
   line-height: normal;
+}
+
+.imgInput {
+  display: none;
 }
